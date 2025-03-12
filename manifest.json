@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Send Image URL",
+    "description": "Send image URL to your information system.",
+    "version": "1.0",
+    "permissions": [
+      "contextMenus",
+      "activeTab"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ]
+  }
+  
