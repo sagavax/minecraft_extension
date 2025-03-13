@@ -18,19 +18,29 @@ chrome.runtime.onInstalled.addListener(() => {
   });
   
   function sendToInformationSystem(imageUrl) {
-    fetch('https://your-information-system.com/api', {
+    fetch('https://your-server-path/upload_picture.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ imageUrl: imageUrl })
+      body: JSON.stringify({
+        picture_url: imageUrl,
+        picture_title: 'Example Title',  // Môžete pridať ďalšie údaje, ak je to potrebné
+        picture_description: 'Example Description',
+        cat_id: 1  // Predpokladáme, že ID kategórie je 1
+      })
     })
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data);
+      if (data.success) {
+        console.log('Obrázok bol úspešne uložený!');
+      } else {
+        console.error('Chyba pri ukladaní obrázka: ' + data.message);
+      }
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Chyba:', error);
     });
   }
+  
   
