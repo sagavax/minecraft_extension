@@ -18,16 +18,16 @@ chrome.runtime.onInstalled.addListener(() => {
   });
   
   function sendToInformationSystem(imageUrl) {
-    fetch('https://your-server-path/upload_picture.php', {
+    fetch('https://minecraft.tmisura.sk/api/upload_picture.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         picture_url: imageUrl,
-        picture_title: 'Example Title',  // Môžete pridať ďalšie údaje, ak je to potrebné
-        picture_description: 'Example Description',
-        cat_id: 1  // Predpokladáme, že ID kategórie je 1
+        picture_title: '',  // Môžete pridať ďalšie údaje, ak je to potrebné
+        picture_description: '',
+        cat_id: 0  // Predpokladáme, že ID kategórie je 1
       })
     })
     .then(response => response.json())
